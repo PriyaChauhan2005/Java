@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+class Main {
+    static class Sum {
+        int mult;
+        int divi;
+        int sub;
+        int mod;
+        
+        int Sub(int a, int b) {
+          sub= a-b;
+          return sub;
+        }
+        int Mod(int a, int b) {
+          mod= a%b;
+          return mod;
+        }
+        int Mult(int a, int b) {
+          mult= a * b;
+            return mult;
+        }
+        int Divi(int a,int b){
+            divi=a/b;
+            return divi;
+        }
+    }
+
+    public static void main(String[] args) {
+        int a, b;
+        Scanner sc = new Scanner(System.in);
+        Sum s1 = new Sum();
+        System.out.println("Enter value a:");
+        a = sc.nextInt();
+        System.out.println("Enter value b:");
+        b = sc.nextInt();
+        System.out.println("Multiplication of these two numbers is: " + s1.Mult(a, b));
+        System.out.println("Division of these two numbers is: " + s1.Divi(a, b));
+        System.out.println("Substraction of these two numbers is: " + s1.Sub(a, b));
+        System.out.println("Modulous of these two numbers is: " + s1.Mod(a, b));
+    }
+}
