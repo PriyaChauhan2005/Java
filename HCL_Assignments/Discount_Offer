@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static class Shopping{
+
+        public void products(){
+            System.out.println("Select the products from below list");
+            System.out.println("1) Women T-shirts: Rs.469");
+            System.out.println("2) Men T-shirts: Rs.469");
+            System.out.println("3) Kids T-shirts: Rs.625");
+            System.out.println("4) Women Ethnic Wear: Rs.625");
+            System.out.println("5) Men Formals: Rs.1000");
+            System.out.println("6) Women Western Wear: Rs.899");
+            System.out.println("7) Kids Night Suit: Rs.999");
+            System.out.println("8) Men Jeans: Rs.625");
+            System.out.println("9) Women Sarees: Rs.725");
+            System.out.println("10)Girl Skirts: Rs.500");
+        }
+        public void selectProduct (int n){
+            int p,sum,pAmount;
+            sum=0;
+            Scanner in= new Scanner(System.in);
+            for(int i=1;i<=n;i++){
+                System.out.println("Product Number:");
+                p= in.nextInt();
+                switch (p){
+                    case 1: sum+=469;
+                     break;
+                    case 2: sum+=469;
+                     break;
+                    case 3: sum+=625;
+                        break;
+                    case 4: sum+= 625;
+                        break;
+                    case 5: sum+=1000;
+                        break;
+                    case 6: sum+=899;
+                        break;
+                    case 7: sum+=999;
+                        break;
+                    case 8: sum+= 625;
+                        break;
+                    case 9: sum+=725;
+                        break;
+                    case 10: sum+=500;
+                        break;
+                }
+
+            }
+            if(sum>3000&&n>=5&&(sum%10)==5){
+                pAmount=(sum*50)/100;
+                System.out.println("Congrats! Your are eligible for 50% discount on your total purchase..");
+                System.out.println("Your actual total is:"+sum);
+                System.out.println("your total amount after discount is:"+pAmount);
+            }
+            else {
+                System.out.println("Better luck next time!!");
+                System.out.println("Your total purchase amount is:"+sum);
+            }
+
+        }
+    }
+
+
+    public static void main(String[] args) {
+        int n,total_amount;
+        Scanner sc= new Scanner(System.in);
+        Shopping S1= new Shopping();
+        S1.products();
+        System.out.println("How many products you want to purchase:");
+        n= sc.nextInt();
+        S1.selectProduct(n);
+
+    }
+}
