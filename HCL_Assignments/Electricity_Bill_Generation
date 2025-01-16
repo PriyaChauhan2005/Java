@@ -1,0 +1,59 @@
+ import java.util.Scanner;
+ public class Main{
+ static float[] calcAmount(int units) {
+ float result[] = new float[2];
+ float total = 0;
+ float price = 0;
+if(units <= 199) {
+ total += (units * 1.20f);
+ price = 1.2f;
+ }
+ else if((units >= 200) && (units < 400)) {
+ total += (units * 1.50f);
+ price = 1.5f;
+ }
+ else if((units >= 400) && (units < 600)) {
+ total += (units * 1.80f);
+ price = 1.8f;
+ }
+ else {
+ total += (units * 2.0f);
+ price = 2.0f;
+ }
+ result[0] = total;
+ result[1] = price;
+ return result;
+ }
+ static float calcSurcharge(float total) {
+ float surcharge = 0;
+ if(total > 400) {
+ surcharge = total * 0.15f;
+ }
+ return surcharge;
+ }
+ public static void main(String[] args) {
+ // TODO Auto-generated method stub
+ System.out.println("Calculate Electricity Bill");
+ Scanner sc = new Scanner(System.in);
+ System.out.println("Enter Customer ID: ");
+ int id = sc.nextInt();
+ System.out.println("Enter the name of the customer: ");
+String name = sc.nextLine();
+ sc.nextLine();
+ System.out.println("Enter the unit consumed by the customer:");
+ int units = sc.nextInt();
+ float[] amount = calcAmount(units);
+ float surcharge = calcSurcharge(amount[0]);
+ float total = amount[0] + surcharge;
+ if(total < 100) {
+ total = 100;
+ }
+ System.out.println("Electricity Bill");
+ System.out.println("Customer ID: " + id);
+ System.out.println("Custumer name: " + name);
+ System.out.println("Unit consumed: " + units);
+ System.out.printf("Amount Charges @Rs. %.2f per unit:%.2f\n",  amount[1], amount[0]);
+    System.out.printf("Surcharge Amount: %.2f\n", surcharge);
+    System.out.printf("Net Amount to be Paid: %.2f\n", total);
+ }
+ }
