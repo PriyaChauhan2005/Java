@@ -1,0 +1,53 @@
+ import java.util.Scanner;
+ public class Main {
+ static String displayID (String[][] employees) {
+ String ids = "";
+ for(int i=0; i<employees.length; i++) {
+ ids += employees[i][0];
+ if(i != employees.length - 1) {
+ ids += ",";
+}
+ }
+ return ids;
+ }
+ static String displayName (String[][] employees) {
+ String name = "";
+ for(int i=0; i<employees.length; i++) {
+ name += employees[i][1];
+ if(i != employees.length - 1) {
+ name += ",";
+ }
+ }
+ return name;
+ }
+ static String displaySal (String[][] employees) {
+ String salary = "";
+ for(int i=0; i<employees.length; i++) {
+ salary += String.format("%.2f", Double.parseDouble(employees[i][2]));
+ if(i != employees.length - 1) {
+ salary += ",";
+ }
+ }
+ return salary;
+ }
+ public static void main(String[] args) {
+ // TODO Auto-generated method stub
+ Scanner sc = new Scanner(System.in);
+ System.out.println("Enter no emp data u wanted to insert:");
+ int n = sc.nextInt();
+ sc.nextLine();
+ System.out.println("Enter Emp id,name,salary: ");
+ String[][] employees = new String[n][3];
+ for(int i=0; i<n; i++) {
+ String employee = sc.nextLine();
+employees[i] = employee.split(",");
+ }
+ System.out.println("Displaying SAP IDS: ");
+ System.out.println(displayID(employees));
+ System.out.println("Displaying Emp names: ");
+ System.out.println(displayName(employees));
+ System.out.println("Displaying Emp salary: ");
+ System.out.println(displaySal(employees));
+ }
+ }
+
