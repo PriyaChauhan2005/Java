@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static class Bill{
+
+        public void discount(int amount){
+            int dis_amount;
+            dis_amount=(amount*30)/100;
+            if(dis_amount<=300){
+                System.out.println("Senior Citizen");
+                System.out.println("Final Bill amount:"+(amount-dis_amount));
+
+            }
+            else{
+                System.out.println("Senior Citizen");
+                System.out.println("Final Bill amount:"+(amount-300));
+            }
+
+        }
+    }
+
+    public static void main(String[] args){
+        int n,amount;
+        Scanner sc=new Scanner(System.in);
+        Bill b1= new Bill();
+        System.out.println("Enter age:");
+        n=sc.nextInt();
+        System.out.println("Enter Bill Amount:");
+        amount=sc.nextInt();
+        if(n<60){
+            System.out.println("You are not eligible for Discount as it is for SENIOR CITIZENS");
+     }
+     else{
+            b1.discount(amount);
+        }
+    }
+}
