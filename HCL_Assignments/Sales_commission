@@ -1,0 +1,66 @@
+import java.util.Scanner;
+import java.util.*;
+
+public class Main{
+    public static class EmployeeDetails{
+        int id;
+        String name;
+        double sales;
+        final double fixed=10000;
+         public float calcComm(double sales){
+             float comm=0.0f;
+             float comm_off;
+             if(sales>=50000 && sales<=100000){
+                comm=1.0f;
+                 System.out.println("Commission offered:"+comm);
+             }
+             else if (sales>=100001 && sales<=200000) {
+                comm=2.5f;
+                 System.out.println("Commission offered:"+comm);
+            }
+            else if (sales>=200001 && sales<=300000) {
+                comm=3.8f;
+                 System.out.println("Commission offered:"+comm);
+            }
+            else if (sales>=300001 && sales<=400000) {
+                comm=4.2f;
+                 System.out.println("Commission offered:"+comm);
+            }
+            else if (sales<50000) {
+                comm=0.0f;
+                 System.out.println("Commission offered:Please provide justification for low sales");
+            }
+            else{
+               comm=5.5f;
+                 System.out.println("Commission offered:"+comm);
+            }
+             comm_off = (float) ((sales * comm) / 100);
+            return comm_off;
+         }
+         public void display(float extra){
+
+            System.out.println("Fixed salary Executive:"+fixed);
+            System.out.println("Sales Executive Commission amount:"+extra);
+            System.out.println("Net Amount Paid to Sales Executive:"+(fixed+extra));
+        }
+    }
+    public static void main(String[] args){
+        float extra;
+        Scanner sc= new Scanner(System.in);
+        EmployeeDetails ed1= new EmployeeDetails();
+        System.out.println("Enter Details");
+        System.out.println("Sales Executive id:");
+        ed1.id=sc.nextInt();
+        System.out.println("Name");
+        ed1.name=sc.next();
+        System.out.println("Monthly sales amount:");
+        ed1.sales=sc.nextDouble();
+        System.out.println("Sales Executive Details:");
+        System.out.println("Sales Executive id:"+ed1.id);
+        System.out.println("Name:"+ed1.name);
+        System.out.println("Monthly Sales amount:"+ed1.sales);
+        extra=ed1.calcComm(ed1.sales);
+        ed1.display(extra);
+    }
+}
+
