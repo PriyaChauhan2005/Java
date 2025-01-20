@@ -1,0 +1,133 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+class Driver {
+    private String name;
+    private String licenseId;
+    private String issueDate;
+    private String expiryDate;
+    private int experience;
+
+    // Parameterized constructor
+    public Driver(String name, String licenseId, String issueDate, String expiryDate, int experience) {
+        this.name = name;
+        this.licenseId = licenseId;
+        this.issueDate = issueDate;
+        this.expiryDate = expiryDate;
+        this.experience = experience;
+    }
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public String getLicenseId() {
+        return licenseId;
+    }
+
+    // Method to check if the driver is eligible
+    public boolean isEligible() {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            sdf.setLenient(false); // Ensure strict date parsing
+            Date currentDate = new Date();
+            Date expiry = sdf.parse(expiryDate);
+
+            // Calculate 5 years from the current date
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(currentDate);
+            calendar.add(Calendar.YEAR, 5);
+            Date fiveYearsFromNow = calendar.getTime();
+
+            return expiry.after(fiveYearsFromNow) && experience >= 5;
+        } catch (ParseException e) {
+            System.out.println("Invalid date format.");
+            return false;
+        }
+    }
+}
+
+public class DriverRecruitment {
+
+    // Helper method to validate date format
+    private static boolean isValidDate(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+        try {
+            sdf.parse(date);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Driver> shortlistedDrivers = new ArrayList<>();
+
+        while (true) {
+            try {
+                System.out.println("\nEnter candidate details");
+                System.out.print("Name: ");
+                String name = scanner.nextLine();
+
+                System.out.print("Driving license number: ");
+                String licenseId = scanner.nextLine();
+
+                System.out.print("License issue Date (dd/MM/yyyy): ");
+                String issueDate = scanner.nextLine();
+                if (!isValidDate(issueDate)) {
+                    System.out.println("Invalid issue date format. Please try again.");
+                    continue;
+                }
+
+                System.out.print("License expiry Date (dd/MM/yyyy): ");
+                String expiryDate = scanner.nextLine();
+                if (!isValidDate(expiryDate)) {
+                    System.out.println("Invalid expiry date format. Please try again.");
+                    continue;
+                }
+
+                System.out.print("Experience (in years): ");
+                int experience;
+                try {
+                    experience = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid experience. Please enter a valid number.");
+                    continue;
+                }
+
+                // Create Driver object
+                Driver driver = new Driver(name, licenseId, issueDate, expiryDate, experience);
+
+                // Check eligibility
+                if (driver.isEligible()) {
+                    shortlistedDrivers.add(driver);
+                }
+
+                System.out.print("Do you want to continue (yes/no): ");
+                String continueInput = scanner.nextLine().trim().toLowerCase();
+                if (!continueInput.equals("yes")) {
+                    break;
+                }
+            } catch (Exception e) {
+                System.out.println("An unexpected error occurred. Please try again.");
+            }
+        }
+
+        // Display shortlisted candidates
+        System.out.println("\nShortlisted Candidates list");
+        if (shortlistedDrivers.isEmpty()) {
+            System.out.println("No candidates shortlisted");
+        } else {
+            System.out.printf("%-10s %-20s %-20s%n", "S. No", "Name", "Driving License Number");
+            int index = 1;
+            for (Driver driver : shortlistedDrivers) {
+                System.out.printf("%-10d %-20s %-20s%n", index++, driver.getName(), driver.getLicenseId());
+            }
+        }
+        scanner.close();
+    }
+}
