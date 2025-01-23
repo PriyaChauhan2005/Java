@@ -1,0 +1,56 @@
+import java.util.*;
+
+class Main {
+    
+   static void sum(int a){
+        System.out.println("sum of single integer is:"+(a+a));
+    }
+   static void sum(int a,int b){
+        System.out.println("sum of integers is:"+(a+b));
+    }
+   static void sum(float a){
+        System.out.println("sum of single floating is:"+(a+a));
+    }
+   static void sum(float a, float b){
+       System.out.println("sum of floating point numbers is:"+(a+b)); 
+    }
+   static void sum(double a){
+        System.out.println("sum of a double is:"+(a+a));
+    }
+   
+    static void sum(double a,double b){
+        System.out.println("sum of doubles is:"+(a+b));
+    }
+   static void sum(int a,double b){
+        System.out.println("sum of integer and double is:"+(a+b));
+    }
+   static void sum(float a,double b){
+        System.out.println("sum of float and double is:"+(a+b));
+    }
+   static void sum(int a,float b){
+        System.out.println("sum of doubles is:"+(a+b));
+    }
+    static void sum(double a, int b){
+        System.out.println("sum of double and integer is:"+(a+b));
+    }
+    static void sum(double a,float b){
+        System.out.println("sum of double and float is:"+(a+b));
+    }
+    static void sum(float a,int b){
+        System.out.println("sum of doubles is:"+(a+b));
+    }
+    public static void main(String[] args) {
+        sum(5);
+        sum(5,8);
+        sum(5.6);
+        sum(5.6,7.9);
+        sum(8676.5453422323);
+        sum(232.454565767,97876.5443432224);
+        sum(3,5.5);
+        sum(5.5,3);
+        sum(56353.453632736,89);
+        sum(89,5635.3453632736);
+        sum(4.4,9485787.84837838);
+        sum(9485787.84837838,4.4);
+    }
+}
