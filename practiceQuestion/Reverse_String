@@ -1,0 +1,27 @@
+import java.util.*;
+
+class Main{
+
+	public static void main(String[] args) {
+	    Scanner sc= new Scanner(System.in);
+        String str;
+        System.out.println("Enter the String:");
+        str=sc.nextLine();
+		System.out.println(reverse(str));
+	}
+
+	public static String reverse(String in) {
+		if (in == null)
+			throw new IllegalArgumentException("Null is not valid input");
+
+		StringBuilder out = new StringBuilder();
+
+		char[] chars = in.toCharArray();
+
+		for (int i = chars.length - 1; i >= 0; i--)
+			out.append(chars[i]);
+
+		return out.toString();
+	}
+
+}
