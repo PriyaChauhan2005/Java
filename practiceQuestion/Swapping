@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Main{
+    static void withoutTemp(int a,int b){
+        a=a+b;
+        b=a-b;
+        a=a-b;
+        System.out.println("Value of a is :"+a+" and value of b is :"+b+" after Swapping without using any external variable.");
+    }
+    static void withTemp(int a,int b){
+        int temp;
+        temp=a;
+        a=b;
+        b=temp;
+        System.out.println("Value of a is :"+a+" and value of b is :"+b+" after Swapping with using extenal variable.");
+    }
+    
+    public static void main(String[] args) {
+      int a,b;
+     Scanner sc=new Scanner(System.in);
+     System.out.println("Enetr value of a:");
+     a=sc.nextInt();
+     System.out.println("Enetr value of b:");
+     b=sc.nextInt();
+     System.out.println("Value of a is :"+a+" and value of b is :"+b+" before Swapping.");
+     withoutTemp(a,b);
+     withTemp(a,b);
+     
+    }
+}
