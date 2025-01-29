@@ -1,0 +1,21 @@
+import java.util.*;
+
+class Main{
+  
+    int id;
+    String name;
+  
+    public static void main(String args[]) {
+        Scanner sc= new Scanner(System.in);
+        
+        // creating an object
+        Main s1 = new Main();
+        System.out.println("Enter your id:");
+        s1.id=sc.nextInt();
+        sc.nextLine();
+        System.out.println("Enter your name:");
+        s1.name=sc.nextLine();
+        System.out.println(s1.id);
+        System.out.println(s1.name);
+    }
+}
