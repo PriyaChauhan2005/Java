@@ -1,0 +1,23 @@
+import java.util.*;
+
+class Main{
+    
+    public static void main(String[] args)
+    {
+        Scanner sc= new Scanner(System.in);
+        int a,b;
+        System.out.println("Enter value of a:");
+        a=sc.nextInt();
+        System.out.println("Enter value of b:");
+        b=sc.nextInt();
+        int ans = (a > b) ? a : b;
+
+        while (true) {
+            if (ans % a == 0 && ans % b == 0)
+                break;
+            ans++;
+        }
+
+        System.out.println("LCM of " + a + " and " + b + " : " + ans);
+    }
+}
